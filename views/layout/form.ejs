@@ -28,32 +28,38 @@
   <body class="text-center bg-dark text-light">
 
     <main class="form-signin">
-      <form action="<%=form_accion %>" method="post">
-        <img class="mb-4" src="/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-        <h1 class="h3 mb-4 fw-normal">
-          <%= form_title %>
-        </h1>
 
-        <% if (form_error) {%>
-          <p class="<%=form_style_text %>">
-            <%=form_error_message %>
-          </p>
+      <% if (loginForm) { %>
+        <form action="/login" method="post">
+          <img class="mb-4" src="/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+          <h1 class="h3 mb-4 fw-normal">Login</h1>
           <% } %>
-            <div class="form-floating mb-2">
-              <input type="text" class="form-control bg-dark text-light" id="username" placeholder="name"
-                name="username">
-              <label for="username" class="text-light">Username</label>
-            </div>
-            <div class="form-floating">
-              <input type="password" class="form-control bg-dark text-light" id="password" placeholder="Password"
-                name="password">
-              <label for="password" class="text-light">Password</label>
-            </div>
-            <a href="<%=form_link %>" class="mt-4 mb-4w-100" tabindex="-1" role="button" aria-disabled="true">
-              <%= form_link_text %>
-            </a>
-            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Iniciar sesion</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-      </form>
+
+      <% if (registerForm) { %>
+        <form action="/register" method="post">
+          <img class="mb-4" src="/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+          <h1 class="h3 mb-4 fw-normal">Register</h1>
+      <% } %>
+
+
+        <% if (hasNotify) { %>
+          <p class="<%=style_text %> fw-bold"> <%=message%> </p>
+        <% } %>
+
+
+          <div class="form-floating mb-2">
+            <input type="text" class="form-control bg-dark text-light" id="username" placeholder="name" name="username" required>
+            <label for="username" class="text-light">Username</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control bg-dark text-light" id="password" placeholder="Password" name="password" required>
+            <label for="password" class="text-light">Password</label>
+          </div>
+          <a href="<%= link %>" class="mt-4 mb-4w-100" tabindex="-1" role="button" aria-disabled="true">
+            <%= link_text %>
+          </a>
+          <button class="w-100 btn btn-lg btn-primary mt-3" type="submit"> <%= button_text %> </button>
+          <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+        </form>
     </main>
     <% include('./footer-form.ejs') %>

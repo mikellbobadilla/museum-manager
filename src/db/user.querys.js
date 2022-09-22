@@ -1,3 +1,4 @@
+const { password } = require('../config/config')
 const { User } = require('../models/user.model')
 
 const exitsByUsername = async (username = '') => {
@@ -24,7 +25,16 @@ const getByUsername = async (username) => {
   return user
 }
 
+
+const saveUser = async (username, password) => {
+  return await User.create({
+    username: username,
+    password: password
+  })
+}
+
 module.exports = {
   exitsByUsername,
-  getByUsername
+  getByUsername,
+  saveUser
 }

@@ -10,11 +10,8 @@ const getToken = (req) => {
   return token
 }
 
-const createToken = (user = {}) => {
-  if (user !== Object) {
-    return new Error('The parameter must be an object')
-  }
-  const token = jwt.sign(user, jwt_secret, {
+const createToken = ({ id, name }) => {
+  const token = jwt.sign({ id, name }, jwt_secret, {
     algorithm: 'HS256',
     expiresIn: '2 days'
   })
@@ -46,14 +43,14 @@ const getUserFromToken = (token = '') => {
 
 // maybe will be moved to middlewares directory
 const isAuthenticate = (req, res, next) => {
-  const token = req.cookies.Authorization
-  if (!token) {
-    res.status(403).redirect('/login')
+  const token = req.cookies.authorization
+  if (token === undefined) {
+    res.redirect('/login')
   }
   const jwt = token.split(' ')[1]
   const verify = validateToken(jwt)
   if (!verify) {
-    res.status(403).redirect('/login')
+    res.redirect('/login')
   }
   next()
 }
@@ -63,5 +60,5 @@ module.exports = {
   createToken,
   getUserFromToken,
   isAuthenticate,
-  isAuthenticate
+  validateToken
 }

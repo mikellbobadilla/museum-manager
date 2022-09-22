@@ -1,0 +1,1 @@
+exports.pathUpload = __dirname

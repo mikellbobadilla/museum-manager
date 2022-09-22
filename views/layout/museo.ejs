@@ -5,6 +5,7 @@
     </h1>
     <table class="table table-dark table-striped">
       <thead>
+
         <tr>
           <th scope="col">id</th>
           <th scope="col">nombre</th>
@@ -14,30 +15,24 @@
           <th scope="col">acciones</th>
           <th scope="col">mas info</th>
         </tr>
+
       </thead>
       <tbody>
         <% users.forEach((user)=> { %>
+
           <tr>
-            <th scope="row">
-              <%=user.id %>
-            </th>
-            <td>
-              <%=user.nombre %>
+
+            <th scope="row"> <%=user.id %> </th>
+            <td> <%=user.nombre %> </td>
+            <td> <%=user.telefono %> </td>
+            <td> <%= user.email %> </td>
+            <td> <%= user.horario %> </td>
+            <td> 
+              <a href="/museos/update/<%= user.id %> ">editar</a> 
+              <a href="/museos/delete/<%= user.id %> ">borrar</a>
             </td>
-            <td>
-              <%=user.telefono %>
-            </td>
-            <td>
-              <%= user.email %>
-            </td>
-            <td>
-              <%= user.horario %>
-            </td>
-            <td>
-              borrar-editar
-            </td>
-            <td>
-              mas...
+            <td> mas... </td>
+
           </tr>
 
           <% }) %>
@@ -45,8 +40,11 @@
     </table>
 
     <div class="col">
+
       <a href="/museos/create" type="button" class="btn btn-outline-info">Agregar Museo</a>
+
     </div>
+
   </main>
 
   <%- include('./footer.ejs') -%>
