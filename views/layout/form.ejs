@@ -1,0 +1,59 @@
+<% include('./header-form.ejs') %>
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="/assets/dist/css/signin.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center bg-dark text-light">
+
+    <main class="form-signin">
+      <form action="<%=form_accion %>" method="post">
+        <img class="mb-4" src="/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <h1 class="h3 mb-4 fw-normal">
+          <%= form_title %>
+        </h1>
+
+        <% if (form_error) {%>
+          <p class="<%=form_style_text %>">
+            <%=form_error_message %>
+          </p>
+          <% } %>
+            <div class="form-floating mb-2">
+              <input type="text" class="form-control bg-dark text-light" id="username" placeholder="name"
+                name="username">
+              <label for="username" class="text-light">Username</label>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control bg-dark text-light" id="password" placeholder="Password"
+                name="password">
+              <label for="password" class="text-light">Password</label>
+            </div>
+            <a href="<%=form_link %>" class="mt-4 mb-4w-100" tabindex="-1" role="button" aria-disabled="true">
+              <%= form_link_text %>
+            </a>
+            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Iniciar sesion</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+      </form>
+    </main>
+    <% include('./footer-form.ejs') %>

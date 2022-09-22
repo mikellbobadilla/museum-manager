@@ -1,0 +1,52 @@
+<%- include('./header.ejs') -%>
+  <main class="container-xxl">
+    <h1 class="fs-1 mt-5 mb-5 text-center">
+      <%=title %>
+    </h1>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">nombre</th>
+          <th scope="col">telefono</th>
+          <th scope="col">email</th>
+          <th scope="col">horarios</th>
+          <th scope="col">acciones</th>
+          <th scope="col">mas info</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach((user)=> { %>
+          <tr>
+            <th scope="row">
+              <%=user.id %>
+            </th>
+            <td>
+              <%=user.nombre %>
+            </td>
+            <td>
+              <%=user.telefono %>
+            </td>
+            <td>
+              <%= user.email %>
+            </td>
+            <td>
+              <%= user.horario %>
+            </td>
+            <td>
+              borrar-editar
+            </td>
+            <td>
+              mas...
+          </tr>
+
+          <% }) %>
+      </tbody>
+    </table>
+
+    <div class="col">
+      <a href="/museos/create" type="button" class="btn btn-outline-info">Agregar Museo</a>
+    </div>
+  </main>
+
+  <%- include('./footer.ejs') -%>
